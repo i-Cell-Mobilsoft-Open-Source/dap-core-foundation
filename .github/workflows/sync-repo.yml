@@ -9,14 +9,14 @@ on:
       - '!.github/workflows/**' 
 
 env:
-    GIT_PAT: ${{ secrets.GIT_PAT }}
+    GIT_PAT: ${{ secrets.ICMS_ROBOT_PAT }}
 
 jobs:
   sync-repo:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        repo: [ids-core-web, ids-core-android, ids-core-ios]
+        repo: [dap-core-web]
 
     name: Sync ${{ matrix.repo }} Repository 
 
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout core-foundation repository
         uses: actions/checkout@v4
         with:
-          repository: i-Cell-Mobilsoft-Open-Source/ids-core-foundation
+          repository: i-Cell-Mobilsoft-Open-Source/dap-core-foundation
           ref: main
           fetch-depth: 0
 
@@ -43,7 +43,7 @@ jobs:
           git pull origin main
 
           # Add core-foundation as a remote and fetch its changes
-          git remote add foundation https://x-access-token:$GIT_PAT@github.com/i-Cell-Mobilsoft-Open-Source/ids-core-foundation.git
+          git remote add foundation https://x-access-token:$GIT_PAT@github.com/i-Cell-Mobilsoft-Open-Source/dap-core-foundation.git
           git fetch foundation
 
           # Create a temporary branch to perform the merge
@@ -67,4 +67,3 @@ jobs:
 
           # Clean up the temporary branch
           git branch -d temp-merge
-        
