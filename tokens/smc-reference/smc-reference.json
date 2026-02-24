@@ -7828,7 +7828,7 @@
         },
         "iconset": {
           "default": {
-            "value": "{base.typography.font-family.Remixicons}",
+            "value": "{base.typography.font-family.RemixIcons}",
             "type": "text"
           },
           "idsbase": {
